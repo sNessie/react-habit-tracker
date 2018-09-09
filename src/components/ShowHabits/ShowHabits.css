@@ -1,0 +1,17 @@
+.todo{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.ready{
+  background: black;
+}
+
+.my_btn{
+  margin-right: 20px;
+}
