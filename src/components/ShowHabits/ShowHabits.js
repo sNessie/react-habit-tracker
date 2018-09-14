@@ -11,15 +11,14 @@ const ShowHabits = ({ habits, counterHabits, makeReady }) => {
               <p>Date of starting: {habit.date}</p>
               <p>Repeat:{habit.times}</p>
               <p>Ready: {habit.ready}/{habit.times}</p>
-                {/* {counterHabits(habit.times, habit.ready, habit.timesRepeat)} */}
                 {habit.timesRepeat.map(time => {
                   if(time.ready){
                   return(
-                    <div className="todo ready" key={habit.date}></div>
+                    <div className="todo ready" key={time.id}></div>
                 )}
                 else{
                   return(
-                    <div className="todo" key={habit.date}></div>
+                    <div className="todo" key={time.id}></div>
                   )
                 }
               })}

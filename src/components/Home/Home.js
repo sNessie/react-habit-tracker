@@ -1,62 +1,41 @@
 import React, {Component} from 'react'
 import ShowHabits from '../ShowHabits/ShowHabits'
+import axios from 'axios'
 
 class Home extends Component{
   state = {
-    habits : [
-      { id: 1,
-        name: 'running',
-        date: '9/09/2018',
-        times: 1,
-        timesRepeat: [{
-          date:'5/9/2018',
-          ready: false
-        }],
-        ready: 0,
-        frequ: 0
-      },
-      { id: 2,
-        name: 'walking',
-        date: '12/09/2018',
-        times: 2,
-        timesRepeat: [
-          {
-            date:'5/9/2018',
-            ready: false
-          },
-          {
-            date:'5/9/2018',
-            ready: true
-        }],
-
-        ready: 2,
-        frequ: 0
-      }
-
-    ]
+    habits : [ ]
   }
 
-  // counterHabits = (counter, ready, date) => {
-  //     let habitArray = [];
-  //     for (let i=0; i < counter; i++){
-  //       if (i<ready){
-  //         habitArray.push(<div onClick={()=>{this.makeReady(i)}} className='todo ready' key= {i} data-make={date[i]} ></div>);
-  //       }else {
-  //         habitArray.push(<div onClick={()=>{this.makeReady(i)}} className='todo' key={i} data-make={date[i]}></div>);
-  //       }
-  //
-  //     }
-  //     return habitArray;
-  // }
+  componentDidMount(){
+    axios.get('data.json')
+      .then(response => {
+        this.setState({
+          habits: response.data
+        })
+      })
+  }
 
   makeReady = (id) =>{
 
+  }
+
+  filterHabit = ({habits}) => {
+    // const searchHabit = e.currentTarget.value;
+    const habit = habits[0].name;
+    // .filter(name => name.toLowerCase().includes(searchHabit.toLowerCase()));
+    console.log(habit);
+  }
+
+  getFilterHabit = (searchHabit) => {
+      return this.state.habits.filter(name => name.toLowerCase().includes(searchHabit.toLowerCase()))
   }
 
 
   render(){
     return (
       <div className="container">
+        <input onInput = {this.filterHabit} habits = {this.state.habits} />
         <ShowHabits habits = {this.state.habits}
           makeReady = {this.makeReady}
           counterHabits={this.counterHabits}/>

@@ -1,8 +1,9 @@
 {
-  "name": "habbit_tracker",
+  "name": "habit_tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "materialize-css": "^0.100.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
