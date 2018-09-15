@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import ShowHabits from '../ShowHabits/ShowHabits'
+import Search from '../Search/Search'
 import axios from 'axios'
 
 class Home extends Component{
   state = {
-    habits : [ ]
+    habits : [ ],
+    filterText : ''
   }
 
   componentDidMount(){
@@ -16,29 +18,20 @@ class Home extends Component{
       })
   }
 
-  makeReady = (id) =>{
-
+  filterUpdate = (filterText) => {
+    this.setState({
+      filterText
+    })
   }
-
-  filterHabit = ({habits}) => {
-    // const searchHabit = e.currentTarget.value;
-    const habit = habits[0].name;
-    // .filter(name => name.toLowerCase().includes(searchHabit.toLowerCase()));
-    console.log(habit);
-  }
-
-  getFilterHabit = (searchHabit) => {
-      return this.state.habits.filter(name => name.toLowerCase().includes(searchHabit.toLowerCase()))
-  }
-
 
   render(){
     return (
       <div className="container">
-        <input onInput = {this.filterHabit} habits = {this.state.habits} />
+        <Search filterText = {this.state.filterText}
+        filterUpdate = {this.filterUpdate} />
         <ShowHabits habits = {this.state.habits}
-          makeReady = {this.makeReady}
-          counterHabits={this.counterHabits}/>
+          filterText = {this.state.filterText}
+          />
       </div>
     )
   }

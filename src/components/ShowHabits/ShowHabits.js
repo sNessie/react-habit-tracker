@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { Component} from 'react'
 import './ShowHabits.css'
 
-const ShowHabits = ({ habits, counterHabits, makeReady }) => {
-    const habitList = habits.map(habit => {
+class ShowHabits extends Component {
+  render(){
+    const { habits, filterText } = this.props;
+    const habitList = habits
+    .filter(habit => {
+      return habit.name.toLowerCase().includes(filterText.toLowerCase())
+    })
+    .map(habit => {
       return (
         <div className="col s12 m6" key={habit.id}>
           <div className="card blue-grey darken-1">
@@ -32,11 +38,12 @@ const ShowHabits = ({ habits, counterHabits, makeReady }) => {
       )
     })
     return(
-        <div className="row">
-          {habitList}
-        </div>
+      <div className="row">
+        {habitList}
+      </div>
+    )
+  }
+}
 
-      )
-      }
 
 export default ShowHabits
