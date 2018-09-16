@@ -6,7 +6,7 @@ class AddHabbit extends Component{
     id: '',
     name: '',
     date: '',
-    times:'' ,
+    times: 0 ,
     timesRepeat: [{
       id: '',
       date: '',
@@ -20,15 +20,17 @@ class AddHabbit extends Component{
   }
 
   handleSubmit = (e) => {
-    // TODO: function generates timesRepeat with unique id
-    // TODO: unique id for habit
     e.preventDefault();
-    this.props.handleSave({...this.state});
+    const timesRepeat = this.generateTimesRepeat(this.state.date, this.state.times);
+    this.setState(
+      timesRepeat
+    )
+    this.props.handleSave({...this.state, timesRepeat});
     this.setState({
       id: '',
       name: '',
       date: '',
-      times:'' ,
+      times: 0,
       timesRepeat: [{
         id: '',
         date: '',
@@ -38,7 +40,24 @@ class AddHabbit extends Component{
     })
   }
 
+generateTimesRepeat = (date, times) => {
+  let startDate = new Date(date);
+  times = parseInt(times, 10);
+  let timesRepeat = [];
+  let newDate = new Date();
+  let id = 0;
+  for(let i=0; i<times; i++){
+    id = Math.floor(Math.random()*1000);
+    newDate.setDate(startDate.getDate() + i);
+    timesRepeat.push({id: id, date: newDate.toISOString().substring(0, 10), ready: false })
+
+  }
+  console.log(timesRepeat);
+  return timesRepeat
+
+}
   render(){
+    const {name, date, times} = this.state;
   return (
     <div className="row">
     <div className="col s12 m6 offset-m3">
@@ -48,10 +67,12 @@ class AddHabbit extends Component{
             <input type="text"
               placeholder="name"
               name="name"
+              value={name}
               onChange={this.handleChange}/>
             <label>
               Start date:
               <input type="date"
+                value={date}
                 name="date"
                 onChange={this.handleChange}/>
             </label>
@@ -59,6 +80,7 @@ class AddHabbit extends Component{
               Days repeat:
               <input type="number"
                 name="times"
+                value={times}
                 onChange={this.handleChange}/>
             </label>
             <button

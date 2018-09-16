@@ -8,6 +8,7 @@ class Home extends Component{
   state = {
     habits : [ ],
     filterText : '',
+    idNextHabit: '',
   }
 
   componentDidMount(){
@@ -16,6 +17,7 @@ class Home extends Component{
         this.setState({
           habits: response.data
         })
+
       })
   }
 
@@ -26,8 +28,8 @@ class Home extends Component{
   }
 
   handleSave = (habit) => {
-    this.setState((prevState, props) => {
-      const newHabit = {...habit}
+    this.setState(() => {
+      const newHabit = {...habit, id: this.state.habits.length}
       return{
          habits: [...this.state.habits, newHabit]
       }
@@ -35,8 +37,10 @@ class Home extends Component{
   }
 
   render(){
+
     return (
       <div className="container">
+
         <AddHabbit handleSave={this.handleSave} />
         <Search filterText = {this.state.filterText}
         filterUpdate = {this.filterUpdate} />
