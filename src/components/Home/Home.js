@@ -9,6 +9,7 @@ class Home extends Component{
     habits : [ ],
     filterText : '',
     idNextHabit: '',
+    showAddForm: false
   }
 
   componentDidMount(){
@@ -35,17 +36,29 @@ class Home extends Component{
       }
   })
   }
+  showForm = () => {
+    let showAddForm = !this.state.showAddForm;
+    this.setState(() => {
+      return{
+        showAddForm
+      }
+    })
+  }
 
   render(){
-
+    const {showAddForm, habits, filterText} = this.state;
     return (
       <div className="container">
-
-        <AddHabbit handleSave={this.handleSave} />
-        <Search filterText = {this.state.filterText}
+        <div className="center">
+            <button className="waves-effect waves-light btn-large"
+              onClick={this.showForm}>Add form habit
+            </button>
+        </div>
+        {showAddForm ? <AddHabbit handleSave={this.handleSave} /> : null }
+        <Search filterText = {filterText}
         filterUpdate = {this.filterUpdate} />
-        <ShowHabits habits = {this.state.habits}
-          filterText = {this.state.filterText}
+        <ShowHabits habits = {habits}
+          filterText = {filterText}
           />
 
       </div>

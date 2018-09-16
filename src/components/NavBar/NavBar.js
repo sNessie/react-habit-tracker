@@ -10,7 +10,7 @@ class NavBar extends Component {
           <a href="" className="brand-logo">Habbit Tracker</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/addhabbit">Add Habbit</NavLink></li>
+            {/* <li><NavLink to="/addhabbit">Add Habbit</NavLink></li> */}
           </ul>
         </div>
         </div>

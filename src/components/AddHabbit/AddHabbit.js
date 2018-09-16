@@ -52,7 +52,6 @@ generateTimesRepeat = (date, times) => {
     timesRepeat.push({id: id, date: newDate.toISOString().substring(0, 10), ready: false })
 
   }
-  console.log(timesRepeat);
   return timesRepeat
 
 }
