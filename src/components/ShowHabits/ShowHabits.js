@@ -15,16 +15,16 @@ class ShowHabits extends Component {
             <div className="card-content white-text">
               <span className="card-title">{habit.name}</span>
               <p>Date of starting: {habit.date}</p>
-              <p>Repeat:{habit.times}</p>
+              <p>Repeat: {habit.times}</p>
               <p>Ready: {habit.ready}/{habit.times}</p>
                 {habit.timesRepeat.map(time => {
                   if(time.ready){
                   return(
-                    <div className="todo ready" key={time.id}></div>
+                    <div className="todo ready" key={time.id} data-date={time.date}></div>
                 )}
                 else{
                   return(
-                    <div className="todo" key={time.id}></div>
+                    <div className="todo" key={time.id} data-date={time.date}></div>
                   )
                 }
               })}

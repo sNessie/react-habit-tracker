@@ -1,34 +1,32 @@
 [
       { "id": 1,
         "name": "running",
-        "date": "9/09/2018",
+        "date": "2018-09-05",
         "times": 1,
         "timesRepeat": [{
           "id": 11,
-          "date":"5/9/2018",
+          "date":"2018-09-05",
           "ready": false
         }],
-        "ready": 0,
-        "frequency": 0
+        "ready": 0
       },
       { "id": 2,
         "name": "walking",
-        "date": "12/09/2018",
+        "date": "2018-09-12",
         "times": 2,
         "timesRepeat": [
           {
           "id": 21,
-            "date": "5/9/2018",
+            "date": "2018-09-05",
             "ready": false
           },
           {
           "id": 22,
-            "date": "6/9/2018",
+            "date": "2018-09-06",
             "ready": true
         }],
 
-        "ready": 2,
-        "frequency": 0
+        "ready": 2
       }
 
     ]
