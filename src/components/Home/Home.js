@@ -37,10 +37,9 @@ class Home extends Component{
   })
   }
   showForm = () => {
-    let showAddForm = !this.state.showAddForm;
-    this.setState(() => {
+    this.setState((prevState, props) => {
       return{
-        showAddForm
+        showAddForm: !prevState.showAddForm
       }
     })
   }

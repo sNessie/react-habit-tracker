@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import './ShowHabits.css'
+import MapRepeats from '../MapRepeats/MapRepeats'
 
 class ShowHabits extends Component {
   render(){
@@ -17,19 +18,7 @@ class ShowHabits extends Component {
               <p>Date of starting: {habit.date}</p>
               <p>Repeat: {habit.times}</p>
               <p>Ready: {habit.ready}/{habit.times}</p>
-              <div className="habit-box">
-                {habit.timesRepeat.map(time => {
-                  if(time.ready){
-                  return(
-                    <div className="todo ready" key={time.id}><span className="hidden">{time.date}</span></div>
-                )}
-                else{
-                  return(
-                    <div className="todo" key={time.id}><span className="hidden">{time.date}</span></div>
-                  )
-                }
-              })}
-            </div>
+                <MapRepeats timesRepeat= {habit.timesRepeat} />
             </div>
             <div className="card-action">
               <button className="waves-effect waves-light btn-large  my_btn">Delete</button>

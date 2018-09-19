@@ -1,32 +1,8 @@
-.habit-box {
-  padding: 20px 0;
-}
-.todo{
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid black;
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  position: relative;
-}
 
-.ready{
-  background: black;
-}
+
+
+
 
 .my_btn{
   margin-right: 20px;
-}
-.hidden {
-  display: none;
-}
-.todo:hover .hidden{
-  display: block;
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  font-size: 10px;
-  width: 100px;
 }
