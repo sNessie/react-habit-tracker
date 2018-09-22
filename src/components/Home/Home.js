@@ -44,6 +44,11 @@ class Home extends Component{
     })
   }
 
+  deleteHabit = (id) => {
+    const habits = this.state.habits.filter( h => h.id !== id);
+    this.setState({habits});
+  }
+
   render(){
     const {showAddForm, habits, filterText} = this.state;
     return (
@@ -58,6 +63,7 @@ class Home extends Component{
         filterUpdate = {this.filterUpdate} />
         <ShowHabits habits = {habits}
           filterText = {filterText}
+          deleteHabit = {this.deleteHabit}
           />
 
       </div>
