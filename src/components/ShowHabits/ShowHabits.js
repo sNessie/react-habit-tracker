@@ -3,9 +3,9 @@ import './ShowHabits.css'
 import MapRepeats from '../MapRepeats/MapRepeats'
 
 class ShowHabits extends Component {
-  
+ 
   render(){
-    const { habits, filterText, deleteHabit } = this.props;
+    const { habits, filterText, deleteHabit, makeReady } = this.props;
     const habitList = habits
     .filter(habit => {
       return habit.name.toLowerCase().includes(filterText.toLowerCase())
@@ -19,7 +19,9 @@ class ShowHabits extends Component {
               <p>Date of starting: {habit.date}</p>
               <p>Repeat: {habit.times}</p>
               <p>Ready: {habit.ready}/{habit.times}</p>
-                <MapRepeats timesRepeat= {habit.timesRepeat} />
+                <MapRepeats timesRepeat= {habit.timesRepeat} 
+                makeReady = {makeReady}
+                />
             </div>
             <div className="card-action">
               <button className="waves-effect waves-light btn-large  my_btn" 

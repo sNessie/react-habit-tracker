@@ -49,6 +49,17 @@ class Home extends Component{
     this.setState({habits});
   }
 
+  makeReady = (i) => {
+    this.setState(() => {
+      const readyHabit = this.state.habits.find(h => (h.timesRepeat.find(t => t.id === i))); 
+      const readyDayHabit = readyHabit.timesRepeat.find(t => t.id === i);
+      readyDayHabit.ready = !readyDayHabit.ready;
+      return{
+        habits: [...this.state.habits]
+      }
+  })
+  }
+
   render(){
     const {showAddForm, habits, filterText} = this.state;
     return (
@@ -64,6 +75,7 @@ class Home extends Component{
         <ShowHabits habits = {habits}
           filterText = {filterText}
           deleteHabit = {this.deleteHabit}
+          makeReady = {this.makeReady}
           />
 
       </div>
