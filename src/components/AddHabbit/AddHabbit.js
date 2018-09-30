@@ -44,12 +44,11 @@ generateTimesRepeat = (date, times) => {
   let startDate = new Date(date);
   times = parseInt(times, 10);
   let timesRepeat = [];
-  let newDate = new Date();
   let id = 0;
   for(let i=0; i<times; i++){
     id = Math.floor(Math.random()*1000);
-    newDate.setDate(startDate.getDate() + i);
-    timesRepeat.push({id: id, date: newDate.toISOString().substring(0, 10), ready: false })
+    startDate.setDate(startDate.getDate() + 1);
+    timesRepeat.push({id: id, date: startDate.toISOString().substring(0, 10), ready: false })
 
   }
   return timesRepeat
@@ -57,6 +56,7 @@ generateTimesRepeat = (date, times) => {
 }
   render(){
     const {name, date, times} = this.state;
+    const todayDay = new Date().toISOString().split('T')[0];
   return (
     <div className="row">
     <div className="col s12 m6 offset-m3">
@@ -64,6 +64,7 @@ generateTimesRepeat = (date, times) => {
         <div className="card-content white-text">
           <form onSubmit={this.handleSubmit}>
             <input type="text"
+              required 
               placeholder="name"
               name="name"
               value={name}
@@ -71,6 +72,8 @@ generateTimesRepeat = (date, times) => {
             <label>
               Start date:
               <input type="date"
+                required 
+                min={todayDay}
                 value={date}
                 name="date"
                 onChange={this.handleChange}/>
@@ -78,6 +81,9 @@ generateTimesRepeat = (date, times) => {
             <label>
               Days repeat:
               <input type="number"
+                required 
+                min="1" 
+                max="60"
                 name="times"
                 value={times}
                 onChange={this.handleChange}/>
