@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import uuid from 'uuid';
 
 
 class AddHabbit extends Component{
@@ -46,7 +47,7 @@ generateTimesRepeat = (date, times) => {
   let timesRepeat = [];
   let id = 0;
   for(let i=0; i<times; i++){
-    id = Math.floor(Math.random()*1000);
+    id = uuid();
     startDate.setDate(startDate.getDate() + 1);
     timesRepeat.push({id: id, date: startDate.toISOString().substring(0, 10), ready: false })
 
